@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 215 70% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 15% 93%;
+    --secondary-foreground: 215 25% 15%;
+
+    --muted: 210 15% 93%;
+    --muted-foreground: 215 10% 50%;
+
+    --accent: 200 60% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 215 70% 35%;
+
+    --radius: 0.75rem;
+
+    /* Status colors */
+    --status-normal: 142 60% 40%;
+    --status-pending: 45 93% 47%;
+    --status-critical: 0 72% 51%;
+    --status-offline: 215 10% 60%;
+
+    /* Additional tokens */
+    --surface-elevated: 0 0% 100%;
+    --header-bg: 215 70% 30%;
+    --header-foreground: 0 0% 100%;
+    --nav-bg: 0 0% 100%;
+    --nav-active: 215 70% 35%;
+    --nav-inactive: 215 10% 55%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer utilities {
+  .status-normal {
+    @apply bg-[hsl(var(--status-normal))] text-white;
+  }
+  .status-pending {
+    @apply bg-[hsl(var(--status-pending))] text-white;
+  }
+  .status-critical {
+    @apply bg-[hsl(var(--status-critical))] text-white;
+  }
+  .status-offline {
+    @apply bg-[hsl(var(--status-offline))] text-white;
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+}
