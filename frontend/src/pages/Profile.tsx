@@ -12,6 +12,7 @@ export default function Profile() {
   const navigate = useNavigate();
 
   if (!user) return null;
+  const availability = user.availabilityStatus ?? "Busy";
 
   const handleLogout = () => {
     logout();
@@ -85,7 +86,7 @@ export default function Profile() {
         {/* Availability Status */}
         <motion.div 
           className={`rounded-2xl p-5 shadow-sm border-2 transition-all ${
-            user.availability === "Available"
+            availability === "Available"
               ? "bg-gradient-to-br from-green-50 to-emerald-50 border-green-200"
               : "bg-gradient-to-br from-red-50 to-pink-50 border-red-200"
           }`}
@@ -94,7 +95,7 @@ export default function Profile() {
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              {user.availability === "Available" ? (
+              {availability === "Available" ? (
                 <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white">
                   <Radio className="w-6 h-6" />
                 </div>
@@ -105,28 +106,28 @@ export default function Profile() {
               )}
               <div>
                 <p className={`text-sm font-bold ${
-                  user.availability === "Available" ? "text-green-900" : "text-red-900"
+                  availability === "Available" ? "text-green-900" : "text-red-900"
                 }`}>Availability Status</p>
                 <p className={`text-xs ${
-                  user.availability === "Available" ? "text-green-700" : "text-red-700"
+                  availability === "Available" ? "text-green-700" : "text-red-700"
                 }`}>
-                  {user.availability === "Available" 
+                  {availability === "Available" 
                     ? "✓ Available for new tasks" 
                     : "✗ Marked as busy"}
                 </p>
               </div>
             </div>
             <motion.button
-              onClick={() => updateAvailability(user.availability === "Available" ? "Busy" : "Available")}
+              onClick={() => updateAvailability(availability === "Available" ? "Busy" : "Available")}
               className={`px-4 py-2 rounded-full font-bold text-sm transition-all ${
-                user.availability === "Available"
+                availability === "Available"
                   ? "bg-green-500 text-white hover:bg-green-600"
                   : "bg-red-500 text-white hover:bg-red-600"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {user.availability === "Available" ? "Go Offline" : "Go Online"}
+              {availability === "Available" ? "Go Offline" : "Go Online"}
             </motion.button>
           </div>
         </motion.div>
